@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ "Регистрация" if mode == "register" else "Вход" }} · ALO Games{% endblock %}
+{% block content %}
+<section class="narrow">
+  <h1>{{ "Создать аккаунт" if mode == "register" else "Войти" }}</h1>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <form method="post" class="form">
+    <label>Имя игрока <input name="username" required minlength="3" maxlength="20" autocomplete="username"></label>
+    <label>Пароль <input name="password" type="password" required minlength="6" autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}"></label>
+    <button class="btn" type="submit">{{ "Создать аккаунт" if mode == "register" else "Войти" }}</button>
+  </form>
+  <p class="muted">
+    {% if mode == "register" %}Уже есть аккаунт? <a href="/login">Войти</a>
+    {% else %}Нет аккаунта? <a href="/register">Зарегистрироваться</a>{% endif %}
+  </p>
+</section>
+{% endblock %}
