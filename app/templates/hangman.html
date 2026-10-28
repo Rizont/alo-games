@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "_macros.html" import modes %}
+{% block title %}Виселица · ALO Games{% endblock %}
+{% block content %}
+<section class="play wide-play">
+  <h1>Виселица</h1>
+  {{ modes([("solo", "Одному"), ("pvp", "Дуэль")]) }}
+  <p id="status" class="status" role="status" aria-live="polite">Подключаемся…</p>
+  <div class="hang">
+    <svg id="gallows" viewBox="0 0 200 230" class="gallows" role="img" aria-label="Виселица">
+      <g class="frame"><path d="M20 215 H120 M50 215 V15 H140 V40 M50 55 L80 15"/></g>
+      <g class="man">
+        <circle data-part="1" cx="140" cy="60" r="18"/>
+        <path data-part="2" d="M140 78 V135"/>
+        <path data-part="3" d="M140 92 L115 118"/>
+        <path data-part="4" d="M140 92 L165 118"/>
+        <path data-part="5" d="M140 135 L120 175"/>
+        <path data-part="6" d="M140 135 L160 175"/>
+      </g>
+    </svg>
+    <div class="hang-side">
+      <div id="word" class="word" aria-live="polite"></div>
+      <p id="lives" class="muted"></p>
+      <p id="hopp" class="muted"></p>
+    </div>
+  </div>
+  <div id="abc" class="abc" aria-label="Буквы"></div>
+  {% include "_result.html" %}
+  <p class="muted rules">Угадывай слово по буквам (можно нажимать клавиши на клавиатуре). Шесть ошибок — и ты проиграл. «ё» пишется как «е». В дуэли слово одно на двоих: выигрывает тот, кто раньше откроет его целиком, а сколько букв открыто у соперника, видно. Одному: победа +8, поражение −2 ALO. Дуэль: +25 / +5 / −15.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/common.js"></script><script src="/static/hangman.js"></script>{% endblock %}

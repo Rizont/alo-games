@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Крестики-нолики · ALO Games{% endblock %}
+{% block content %}
+<section class="play">
+  <h1>Крестики-нолики</h1>
+  {% include "_modes.html" %}
+  <p id="status" class="status" role="status" aria-live="polite">Подключаемся…</p>
+  <div id="board" class="board" aria-label="Игровое поле"></div>
+  {% include "_result.html" %}
+  <p class="muted rules">Бот: победа +10, ничья +2, поражение −3 ALO. Живой игрок: +25, +5, −15. Выход из начатой партии считается поражением.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/common.js"></script><script src="/static/tictactoe.js"></script>{% endblock %}

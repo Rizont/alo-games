@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "_macros.html" import modes %}
+{% block title %}Wordle · ALO Games{% endblock %}
+{% block content %}
+<section class="play wide-play">
+  <h1>Wordle</h1>
+  {{ modes([("solo", "Одному"), ("pvp", "Дуэль")]) }}
+  <p id="status" class="status" role="status" aria-live="polite">Подключаемся…</p>
+  <div id="wgrid" class="wgrid" aria-label="Попытки"></div>
+  <div id="wopp" class="wopp" hidden><span>Соперник</span><div id="woppgrid" class="woppgrid"></div></div>
+  <div id="kb" class="kb" aria-label="Клавиатура"></div>
+  {% include "_result.html" %}
+  <p class="muted rules">Угадай слово из 5 букв за 6 попыток. Зелёная — буква на месте, жёлтая — есть в слове, но в другом месте, серая — такой буквы нет. Слова только русские, буква «ё» пишется как «е». В дуэли у вас одно и то же слово: выигрывает тот, кто угадал первым (цвета попыток соперника видны, буквы — нет). Одному: победа +8, поражение −2 ALO. Дуэль: +25 / +5 (ничья) / −15.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/common.js"></script><script src="/static/wordle.js"></script>{% endblock %}

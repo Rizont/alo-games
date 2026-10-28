@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Четыре в ряд · ALO Games{% endblock %}
+{% block content %}
+<section class="play wide-play">
+  <h1>Четыре в ряд</h1>
+  {% include "_modes.html" %}
+  <div class="modes" role="group" aria-label="Число игроков">
+    <button class="size active" data-size="3">3 игрока</button>
+    <button class="size" data-size="4">4 игрока</button>
+  </div>
+  <p id="status" class="status" role="status" aria-live="polite">Подключаемся…</p>
+  <div id="c4board" class="c4-board" aria-label="Игровое поле"></div>
+  <ul id="legend" class="legend"></ul>
+  {% include "_result.html" %}
+  <p class="muted rules">Ходите по очереди, выигрывает тот, кто первым соберёт четыре фишки в линию (по горизонтали, вертикали или диагонали). В режиме с ботами недостающие места занимают боты. Победа: +10 ALO с ботами, +40 с людьми; поражение: −3 или −10. Если игрок вышел, его ходы пропускаются.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/common.js"></script><script src="/static/connect4.js"></script>{% endblock %}

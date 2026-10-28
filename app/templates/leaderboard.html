@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Рейтинг · ALO Games{% endblock %}
+{% block content %}
+<section class="narrow wide">
+  <h1>Рейтинг игроков</h1>
+  {% if players %}
+  <div class="scroll">
+    <table>
+      <thead><tr><th>#</th><th>Игрок</th><th>ALO</th><th>Победы</th><th>Ничьи</th><th>Поражения</th></tr></thead>
+      <tbody>
+      {% for p in players %}
+        <tr {% if user and user.id == p.id %}class="me"{% endif %}>
+          <td>{{ loop.index }}</td><td>{{ p.username }}</td><td><b>{{ p.alo }}</b></td>
+          <td>{{ p.wins }}</td><td>{{ p.draws }}</td><td>{{ p.losses }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <p class="muted">Пока никого нет. <a href="/register">Зарегистрируйся</a> и сыграй первую партию.</p>
+  {% endif %}
+</section>
+{% endblock %}

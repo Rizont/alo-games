@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="intro">
+  <h1>Играй. Копи ALO. Поднимайся в рейтинге.</h1>
+  <p>Выбери игру и соперника — бота или живого человека. За победу даём ALO, за поражение немного забираем.</p>
+</section>
+<section class="games">
+  {% for g in games %}
+    <article class="game {% if not g.ready %}soon{% endif %}">
+      <h2>{{ g.title }}</h2>
+      {% if g.players %}<p class="badge">{{ g.players }}</p>{% endif %}
+      <p>{{ g.text }}</p>
+      {% if g.ready %}<a class="btn" href="/games/{{ g.slug }}">Играть</a>{% endif %}
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}

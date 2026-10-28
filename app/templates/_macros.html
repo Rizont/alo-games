@@ -1,0 +1,5 @@
+{% macro modes(buttons) %}
+<div class="modes" role="group" aria-label="Режим">
+  {% for value, label in buttons %}<button class="mode{% if loop.first %} active{% endif %}" data-mode="{{ value }}">{{ label }}</button>{% endfor %}
+</div>
+{% endmacro %}

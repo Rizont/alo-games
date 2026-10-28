@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ALO Games{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">ALO Games</a>
+    <nav>
+      <a href="/">Игры</a>
+      <a href="/leaderboard">Рейтинг</a>
+      {% if user %}
+        <span class="chip"><b>{{ user.alo }}</b> ALO · {{ user.username }}</span>
+        <a href="/logout">Выйти</a>
+      {% else %}
+        <a href="/login">Войти</a>
+        <a class="btn small" href="/register">Регистрация</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

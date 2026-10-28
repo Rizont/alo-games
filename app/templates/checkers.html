@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Шашки · ALO Games{% endblock %}
+{% block content %}
+<section class="play wide-play">
+  <h1>Шашки</h1>
+  {% include "_modes.html" %}
+  <p id="status" class="status" role="status" aria-live="polite">Подключаемся…</p>
+  <div id="ckboard" class="ck-board" aria-label="Доска"></div>
+  {% include "_result.html" %}
+  <p class="muted rules">Русские шашки. Выбери свою шашку (подсвечены те, которыми можно ходить), затем клетку-цель. Бить обязательно, простая шашка бьёт и назад, дамка ходит и бьёт через всю диагональ. Если 40 ходов подряд нет взятий и ходов простых шашек — ничья. Бот: победа +10, ничья +2, поражение −3 ALO. Живой игрок: +25 / +5 / −15.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/common.js"></script><script src="/static/checkers.js"></script>{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Морской бой · ALO Games{% endblock %}
+{% block content %}
+<section class="play wide-play">
+  <h1>Морской бой</h1>
+  {% include "_modes.html" %}
+  <p id="status" class="status" role="status" aria-live="polite">Подключаемся…</p>
+  <div class="fleets">
+    <div><h2 class="grid-title">Твой флот</h2><div id="mine" class="bs-grid" aria-label="Твоё поле"></div></div>
+    <div><h2 class="grid-title">Поле соперника</h2><div id="theirs" class="bs-grid" aria-label="Поле соперника"></div></div>
+  </div>
+  <div id="setup" class="setup" hidden>
+    <button id="shuffle" class="btn alt">Расставить заново</button>
+    <button id="ready" class="btn">Готов</button>
+  </div>
+  {% include "_result.html" %}
+  <p class="muted rules">Флот: 5, 4, 3, 3 и 2 клетки, корабли не касаются друг друга. Попал — стреляешь ещё раз, промахнулся — ход соперника. Бот: победа +10, ничья не бывает, поражение −3 ALO. Живой игрок: +25 / −15.</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/common.js"></script><script src="/static/battleship.js"></script>{% endblock %}
